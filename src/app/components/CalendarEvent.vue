@@ -1,5 +1,5 @@
 <template>
-  <div class="day-event" :style="getEventBackgroundColour()">
+  <div class="day-event" :style="getEventBackgroundColour">
     <div>
       <span class="has-text-centered details">{{ event.details }}</span>
       <div class="has-text-centered icons">
