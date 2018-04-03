@@ -6,9 +6,18 @@ export const store = {
     seedData
   },
   editEvent(dayId, eventDetails) {
-    const dayObj = this.state.seedData.find(day => day.id === dayId);
-    const eventObj = dayObj.events.find(e => e.details === eventDetails);
+    this.resetEditOfAllEvents();
+    const eventObj = this.getEvent(dayId, eventDetails);
     eventObj.edit = true;
+  },
+  updateEvent(dayId, originalEventDetails, newEventDetails) {
+    const eventObj = this.getEvent(dayId, originalEventDetails);
+    eventObj.details = newEventDetails;
+    eventObj.edit = false;
+  },
+  getEvent(dayId, eventDetails) {
+    const dayObj = this.state.seedData.find(day => day.id === dayId);
+    return dayObj.events.find(e => e.details === eventDetails);
   },
   getActiveDay() {
     return this.state.seedData.find(day => day.active);
