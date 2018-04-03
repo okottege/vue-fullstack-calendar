@@ -15,6 +15,11 @@ export const store = {
     eventObj.details = newEventDetails;
     eventObj.edit = false;
   },
+  deleteEvent(dayId, eventDetails) {
+    const dayObj = this.state.seedData.find(d => d.id === dayId);
+    const eventIndex = dayObj.events.findIndex(e => e.details === eventDetails);
+    dayObj.events.splice(eventIndex, 1);
+  },
   getEvent(dayId, eventDetails) {
     const dayObj = this.state.seedData.find(day => day.id === dayId);
     return dayObj.events.find(e => e.details === eventDetails);
